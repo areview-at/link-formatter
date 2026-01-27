@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { width: 280px; font-family: -apple-system, sans-serif; padding: 15px; color: #172b4d; }
+    h3 { margin: 0 0 10px 0; font-size: 16px; border-bottom: 2px solid #ebecf0; padding-bottom: 5px; }
+    .group { margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between; font-size: 13px; }
+    input[type="text"] { width: 40px; text-align: center; border: 1px solid #dfe1e6; border-radius: 3px; padding: 4px; }
+    #sep { width: 60px; }
+    .preview-box { background: #f4f5f7; border: 1px solid #dfe1e6; border-radius: 3px; padding: 10px; font-family: monospace; font-size: 11px; margin: 10px 0; word-break: break-all; min-height: 20px; }
+    button { width: 100%; background: #0052cc; color: white; border: none; padding: 10px; border-radius: 3px; cursor: pointer; font-weight: bold; margin-bottom: 10px; }
+    .shortcut-link { display: block; text-align: center; font-size: 11px; color: #0052cc; text-decoration: none; cursor: pointer; }
+    .shortcut-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <h3>Format Settings</h3>
+  <div class="group"><span>Include ID</span><input type="checkbox" id="incId"></div>
+  <div class="group"><span>Include Title</span><input type="checkbox" id="incName"></div>
+  <div class="group"><span>Include URL</span><input type="checkbox" id="incUrl"></div>
+  <hr style="border:0; border-top:1px solid #eee;">
+  <div class="group"><span>ID/Name Wrap</span> <div><input type="text" id="prefix"> <input type="text" id="suffix"></div></div>
+  <div class="group"><span>Separator</span><input type="text" id="sep"></div>
+  <div class="group"><span>URL Wrap</span> <div><input type="text" id="urlPrefix"> <input type="text" id="urlSuffix"></div></div>
+  <div style="font-size:11px; font-weight:bold;">Preview:</div>
+  <div id="preview" class="preview-box"></div>
+  <button id="save">Save Settings</button>
+  <a id="openShortcuts" class="shortcut-link">Configure Keyboard Shortcut</a>
+  <script src="popup.js"></script>
+</body>
+</html>

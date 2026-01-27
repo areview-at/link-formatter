@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "Jira Link Formatter",
+  "version": "1.3",
+  "icons": {
+    "16": "icons/link_formatter_16_16.png",
+    "32": "icons/link_formatter_32_32.png",
+    "48": "icons/link_formatter_48_48.png",
+    "128": "icons/link_formatter_128_128.png"
+  },
+  "action": {
+    "default_icon": {
+      "16": "icons/link_formatter_16_16.png",
+      "32": "icons/link_formatter_32_32.png"
+    }
+  },
+  "permissions": [
+    "activeTab", 
+    "storage", 
+    "scripting"
+  ],
+  "options_ui": {
+    "page": "popup.html",
+    "open_in_tab": false
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "commands": {
+    "copy-jira-link": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+L",
+        "mac": "Command+Shift+L"
+      },
+      "description": "Copy formatted Jira link"
+    }
+  }
+}
