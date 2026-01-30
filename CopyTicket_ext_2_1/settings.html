@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    :root { 
+      --bg: #FAFBFC; --card: #FFFFFF; --text: #172B4D; --border: #DFE1E6; 
+      --primary: #0052CC; --input-bg: #FFFFFF; --check-bg: #ebecf0;
+    }
+    body.dark-mode { 
+      --bg: #1D2125; --card: #22272B; --text: #B3BAC5; --border: #444; 
+      --primary: #579DFF; --input-bg: #2C333A; --check-bg: #444;
+    }
+    
+    body { width: 480px; font-family: -apple-system, sans-serif; padding: 25px; color: var(--text); background: var(--bg); transition: background 0.3s; }
+    .header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--border); padding-bottom: 10px; margin-bottom: 20px; }
+    
+    /* Updated Banner for "Active" status */
+    .active-banner { 
+      background: #E6EFFC; color: #0052CC; padding: 12px; border-radius: 4px; 
+      font-weight: 600; margin-bottom: 20px; display: flex; justify-content: space-between; 
+      border: 1px solid #B3D4FF; align-items: center;
+    }
+    
+    .card { background: var(--card); padding: 20px; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+    .group { margin-bottom: 15px; display: flex; align-items: center; justify-content: space-between; }
+    
+    input[type="text"], select { 
+      padding: 8px; border: 2px solid var(--border); border-radius: 4px; 
+      text-align: center; background: var(--input-bg); color: var(--text); outline: none;
+    }
+    input[type="text"]:focus { border-color: var(--primary); }
+    
+    input[type="checkbox"] { 
+      width: 18px; height: 18px; cursor: pointer; 
+      accent-color: var(--primary);
+      filter: saturate(1.5);
+    }
+    
+    #profileName { width: 200px; text-align: left; padding-left: 10px; }
+    .preview-box { background: #F4F5F7; padding: 15px; border-radius: 6px; font-family: 'SFMono-Medium', monospace; font-size: 12px; margin: 15px 0; border: 2px dashed #B3BAC5; color: #172B4D; }
+    
+    .actions { display: flex; gap: 10px; }
+    button { padding: 10px 20px; border-radius: 4px; cursor: pointer; border: none; font-weight: 600; transition: 0.2s; }
+    
+    #save { background: #0052CC; color: white; flex: 2; }
+    #save:hover { background: #0747A6; }
+    
+    /* Styled for "Set as Active" */
+    #makeDefault { background: #EBECF0; color: #42526E; font-size: 12px; }
+    #makeDefault.is-standard { background: #00875A; color: white; border: 1px solid #006644; pointer-events: none; }
+    
+    #add { background: #00875A; color: white; width: 100%; margin-bottom: 20px; }
+    #add:hover { background: #006644; }
+    
+    #delete { background: #FFEBE6; color: #DE350B; }
+    #delete:hover { background: #FFD5CC; }
+    
+    .theme-switch { font-size: 12px; cursor: pointer; padding: 6px; border: 2px solid var(--border); border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h3>Jira Link Profiles</h3>
+    <select id="themeSelect" class="theme-switch">
+      <option value="light">☀️ Light</option>
+      <option value="dark">🌙 Dark</option>
+    </select>
+  </div>
+
+  <div class="active-banner" id="activeBanner">
+    <span>Active Profile:</span>
+    <span id="currentDefaultLabel">Loading...</span>
+  </div>
+
+  <button id="add">+ Create New Profile</button>
+
+  <div class="card">
+    <div class="group">
+      <strong>Manage Profile:</strong>
+      <div style="display: flex; gap: 10px;">
+        <select id="profileDropdown" style="width: 160px;"></select>
+        <button id="makeDefault">Set as Active</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="group"><span>Profile Name</span><input type="text" id="profileName" placeholder="e.g., Slack Format"></div>
+    <div class="group"><span>Include Issue Key</span><input type="checkbox" id="incId"></div>
+    <div class="group"><span>Include Summary</span><input type="checkbox" id="incName"></div>
+    <div class="group"><span>Include URL</span><input type="checkbox" id="incUrl"></div>
+    <div class="group"><span>Clickable Link</span><input type="checkbox" id="isClickable"></div>
+    <div class="group"><span>Key Wrap (Prefix/Suffix)</span><div><input type="text" id="prefix" style="width:40px"> <input type="text" id="suffix" style="width:40px"></div></div>
+    <div class="group"><span>Separator</span><input type="text" id="sep" style="width:80px"></div>
+    <div class="group"><span>URL Wrap</span><div><input type="text" id="urlPrefix" style="width:40px"> <input type="text" id="urlSuffix" style="width:40px"></div></div>
+    
+    <div style="font-size:11px; font-weight:bold; color: #6B778C; margin-bottom: 5px;">Preview Output:</div>
+    <div class="preview-box" id="preview"></div>
+    
+    <div class="actions">
+      <button id="save">Save Changes</button>
+      <button id="delete">Delete Profile</button>
+    </div>
+  </div>
+  <script src="settings.js"></script>
+</body>
+</html>
