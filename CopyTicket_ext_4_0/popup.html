@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    :root { --pop-bg: #FFFFFF; --pop-text: #172B4D; --pop-border: #DFE1E6; }
+    body.dark-mode { --pop-bg: #1D2125; --pop-text: #B3BAC5; --pop-border: #444; }
+
+    body { width: 260px; font-family: -apple-system, sans-serif; padding: 15px; margin: 0; background: var(--pop-bg); color: var(--pop-text); }
+    .profile-list { display: flex; flex-direction: column; gap: 12px; }
+    
+    .profile-btn { 
+      display: flex; justify-content: space-between; align-items: center;
+      width: 100%; padding: 14px; border-radius: 8px; cursor: pointer; 
+      transition: all 0.2s ease; border: 2px solid transparent;
+      text-align: left; position: relative; overflow: hidden;
+    }
+    .profile-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 8px rgba(0,0,0,0.15); }
+    
+    .btn-blue { background: #E6EFFC; border-color: #B3D4FF; }
+    .btn-green { background: #E3FCEF; border-color: #ABF5D1; }
+    .btn-purple { background: #F3E6FF; border-color: #D6BCFA; }
+    .btn-teal { background: #E6FCFF; border-color: #B3F5FF; }
+    .btn-orange { background: #FFF0B3; border-color: #FFE380; }
+
+    .dark-mode .btn-blue { background: #0747A6; border-color: #2684FF; }
+    .dark-mode .btn-green { background: #006644; border-color: #36B37E; }
+    .dark-mode .btn-purple { background: #5243AA; border-color: #998DD9; }
+    .dark-mode .btn-teal { background: #008DA6; border-color: #00B8D9; }
+    .dark-mode .btn-orange { background: #A54800; border-color: #FFAB00; }
+
+    .profile-name { font-weight: 800; font-size: 15px; color: #0052CC; }
+    .dark-mode .profile-name { color: white; }
+    
+    .shortcut-hint { font-size: 10px; opacity: 0.7; margin-top: 3px; font-weight: 600; color: var(--pop-text); }
+    
+    .profile-btn.is-standard { 
+      border: 3px solid #0052CC !important; 
+      box-shadow: 0 0 10px rgba(0,82,204,0.3);
+    }
+    .standard-badge { 
+      font-size: 9px; background: #0052CC; color: white; 
+      padding: 4px 8px; border-radius: 20px; font-weight: bold; 
+      text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    
+    .footer { margin-top: 15px; padding-top: 12px; border-top: 1px solid var(--pop-border); text-align: center; }
+    .settings-link { font-size: 12px; color: #0052CC; text-decoration: none; font-weight: bold; padding: 5px; cursor: pointer; }
+    .settings-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div id="profile-list" class="profile-list"></div>
+  <div class="footer">
+    <a href="#" id="open-settings" class="settings-link">⚙️ Manage Profiles</a>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
